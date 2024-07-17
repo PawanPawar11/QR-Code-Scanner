@@ -18,6 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 0 10px;
   background: #e3f2fd;
 }
 
@@ -27,6 +28,12 @@ body {
   border-radius: 7px;
   background: #0b85ff;
   padding: 30px 30px 35px;
+  transition: height 0.2s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper.active {
+  height: 525px;
 }
 
 .wrapper form {
@@ -38,6 +45,12 @@ body {
   border-radius: 7px;
   align-items: center;
   justify-content: center;
+  transition: height 0.2s ease;
+}
+
+.wrapper.active form {
+  height: 225px;
+  pointer-events: none;
 }
 
 form img {
@@ -45,8 +58,12 @@ form img {
   max-width: 148px;
 }
 
-form .content {
-  /* display: none; */
+.wrapper.active form img {
+  display: block;
+}
+
+.wrapper.active form .content {
+  display: none;
 }
 
 form .content i {
@@ -66,10 +83,17 @@ form .content p {
   pointer-events: none;
 }
 
+.wrapper.active .details {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s 0.05s ease;
+}
+
 .details textarea {
   width: 100%;
   height: 128px;
   outline: none;
+  resize: none;
   color: #fff;
   font-size: 18px;
   background: none;
@@ -78,9 +102,24 @@ form .content p {
   border: 1px solid #fff;
 }
 
+/* textarea::-webkit-scrollbar {
+  width: 0px;
+}
+textarea:hover::-webkit-scrollbar {
+  width: 5px;
+}
+textarea:hover::-webkit-scrollbar-track {
+  background: none;
+}
+textarea:hover::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 8px;
+} */
+
 .details .buttons {
   display: flex;
   margin-top: 20px;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -95,4 +134,20 @@ form .content p {
   background: #fff;
   border-radius: 5px;
   width: calc(100% / 2 - 10px);
+  transition: transform 0.3s ease;
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 450px) {
+  .wrapper {
+    padding: 25px;
+    height: 260px;
+  }
+
+  .wrapper.active {
+    height: 520px;
+  }
 }
